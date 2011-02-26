@@ -2,6 +2,19 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+##### FUNCTIONS ######
+
+# Include function. Usage : include yourScript 
+function include {
+	if [ -f $1 ]
+	then
+		source $1
+	fi
+}
+
+# Command line personalization
+export PS1='\[\e[1;34m\]-=\u=-\[\e[0m\]@\h:[\[\e[1;31m\]\t\[\e[0m\]]:\[\e[1;32m\]\w\[\e[0m\]\$ '
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -49,13 +62,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -99,3 +105,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 alias zf='/usr/local/ZendFrameworkCli/bin/zf.sh'
+
+export GREP_COLOR="1;33"
+alias grep='grep --color=auto'
+eval "`dircolors`"
+
+# History size
+export HISTSIZE=10000
+
+# VIM editor by default
+export EDITOR="vim"

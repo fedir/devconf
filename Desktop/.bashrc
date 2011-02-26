@@ -4,6 +4,19 @@
 
 umask 003
 
+##### FUNCTIONS ######
+
+# Include function. Usage : include yourScript 
+function include {
+	if [ -f $1 ]
+	then
+		source $1
+	fi
+}
+
+# Command line personalization
+export PS1='\[\e[1;34m\]-=\u=-\[\e[0m\]@\h:[\[\e[1;31m\]\t\[\e[0m\]]:\[\e[1;32m\]\w\[\e[0m\]\$ '
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 

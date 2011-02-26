@@ -16,5 +16,8 @@ let tlist_php_settings = 'php;c:class;d:constant;f:function'
 " vim-taglist : Autoupdate tags for php files on save
 autocmd BufWritePost *.php :TlistUpdate
 
+""" Status line """
+" Always visible
 set laststatus=2
+" Contents
 set statusline=%<%F%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%)%O'%02b'

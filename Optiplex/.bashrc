@@ -90,11 +90,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -115,15 +110,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
-export PS1='\h:\w\$ '
 umask 022
 
+export LS_OPTIONS='--color=auto'
+
 # Aliases
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -l'
-alias l='ls $LS_OPTIONS -lA'
+alias ls='ls $LS_OPTIONS -h'
+alias ll='ls $LS_OPTIONS -lh'
+alias l='ls $LS_OPTIONS -lAh'
 alias psm='ps -eo pmem,pcpu,rss,vsize,args | sort -k 1 -r | more'
 alias psc='ps -eo pmem,pcpu,rss,vsize,args | sort -k 2 -r | more'
 alias rm='rm -i'
@@ -139,28 +133,16 @@ alias ls='ls -Ga'
 #PS1='\[\e[0;31m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]\[\e[0;32m\] '
 export GREP_COLOR="1;33"
 alias grep='grep --color=auto'
-export LS_OPTIONS='--color=auto'
 eval "`dircolors`"
-alias ls='ls $LS_OPTIONS -h'
-alias ll='ls $LS_OPTIONS -lh'
-alias l='ls $LS_OPTIONS -lAh'
-
 
 # History size
 export HISTSIZE=10000
-
-# Editing
-export EDITOR=vim
-
-# Mac : TextEdit console
-alias edit='open -e'
 
 # No Wuff Wuff message during screen usage
 alias screen='TERM=screen screen'
 
 # VIM editor by default
 export EDITOR="vim"
-
 
 # Including connections file
 include ~/.bashrc_connections
