@@ -18,16 +18,14 @@ export PS1='\[\e[1;34m\]-=\u=-\[\e[0m\]@\h:[\[\e[1;31m\]\t\[\e[0m\]]:\[\e[1;32m\
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+### Bash history ###
 # don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
-
+# size
+HISTSIZE=10000
+HISTFILESIZE=2000
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -109,9 +107,6 @@ alias zf='/usr/local/ZendFrameworkCli/bin/zf.sh'
 export GREP_COLOR="1;33"
 alias grep='grep --color=auto'
 eval "`dircolors`"
-
-# History size
-export HISTSIZE=10000
 
 # VIM editor by default
 export EDITOR="vim"
