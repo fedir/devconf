@@ -1,0 +1,8 @@
+This project is created to make fast transfer of performance-oriented configuration for PHP development.
+
+Currently it contains following configurations :
+
+* bash configuration ( could be used on variety of UNIX systems )
+* vim editor ( tuning, PHP development oriented )
+
+These configuration are made originally for personal usage, but could be used by everyone, who looks to optimze performance and ergonomy of work in shell environment.
