@@ -3,6 +3,10 @@ syntax enable
 
 " Dark color scheme by default
 set background=dark
+set nocompatible
+set ruler
+" Show whitespace characters by F4
+nnoremap <silent> <F4> :set list!<CR>
 
 """ Taglist plugin configuration """
 " Removing variables list from the taglist panel for PHP files
@@ -17,9 +21,13 @@ set tabstop=4
 
 filetype on
 filetype plugin on
+filetype indent on
 
 " Wraps selected text in XML / HTML comments
 :vmap sx "zdi<!--<C-R>z--><ESC>  : wrap <!-- --> around VISUALLY selected Text
+
+" Tabs are four columns wide. Each indentation level is one tab.
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab 
 
 " Vim copy / paste remapping 
 nmap <C-V> "+gP
