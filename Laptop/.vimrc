@@ -38,4 +38,11 @@ vmap <C-C> "+y
 " Always visible
 set laststatus=2
 " Contents
-set statusline=%<%F%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%)%O'%02b'
+set statusline=%<%F%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%)'%02b'
+
+" Cyrillic Mapping
+map ш i
+map ^К ^R
+map г u
+map юф :q
+map юя :w
