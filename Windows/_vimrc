@@ -1,0 +1,71 @@
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
+
+" Full utf8 support for cyryllic encoding resolution
+if &enc !~? '^u'
+        if &tenc == ''
+                let &tenc = &enc
+        endif
+        set enc=utf-8
+endif
+set fencs=ucs-bom,utf-8,default,iso-8859-5
+setglobal bomb fenc=utf-8
+if has('gui_running')
+        if has('gui_gtk2')
+                set gfn=Courier\ New\ 10
+        elseif has('gui_photon')
+                set gfn=Courier\ New:s10
+        elseif has('gui_kde')
+                set gfn=Courier\ New/10/-1/5/50/0/0/0/1/0
+        elseif has('x11')
+                set gfn=*-courier-medium-r-normal-*-*-100-*-*-m-*-*
+        else
+                set gfn=Courier_New:h10:cDEFAULT
+        endif
+endif
+language messages en_EN.UTF-8
+runtime vimrc_example.vim
+
+" Dark theme
+color koehler
+
+" Full screen
+map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+
+" Disable toolbar, let only
+set go=m
+
+" Cyrillic Mapping
+map ш i
+map Й A
+map г u
+map ^S confirm w
+map ^Q confirm q
+map ^WQ confirm wq
