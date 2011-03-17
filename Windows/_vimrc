@@ -66,6 +66,7 @@ set go=m
 map ш i
 map Й A
 map г u
+
 map ^S confirm w
 map ^Q confirm q
 map ^WQ confirm wq
