@@ -22,7 +22,7 @@ export PS1='\[\e[1;34m\]-=\u=-\[\e[0m\]@\h:[\[\e[1;31m\]\t\[\e[0m\]]:\[\e[1;32m\
 # don't put duplicate lines in the history. See bash(1) for more options
 HISTCONTROL=ignoredups:ignorespace
 # size
-HISTSIZE=10000
+HISTSIZE=1000
 HISTFILESIZE=2000
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -110,3 +110,17 @@ eval "`dircolors`"
 
 # VIM editor by default
 export EDITOR="vim"
+
+# Cyrilic aliases
+alias вим='vim'
+
+# Git aliases
+alias gh='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
